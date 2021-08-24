@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a3101040-44af-4bf6-9fbd-cda93f5e2e3b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="D:\Go" />
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1wvXq6qok2RJ3uPEQZFxlk3RTFy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/example/client/rtp-to-webrtc" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\example\client\rtp-to-webrtc" />
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\example\client\rtp-forwarder" />
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\example\client\rtp-forwarder\demo" />
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\example\client\play-from-disk" />
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\example\client" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\example\client\save-disk\demo" />
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\example\client\signal\testsignal\cmd" />
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\example\client\save-disk\cmd" />
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\example\client\save-disk" />
+      <recent name="D:\goPath\src\github.com\oofpgDLD\webrtclient\tools\cmd" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Test.TestPut in github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/client">
+    <configuration name="go build github.com/oofpgDLD/webrtclient/example/client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="webrtclient" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/example/client/main.go" />
+      <package value="github.com/oofpgDLD/webrtclient/example/client" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="webrtclient" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/example/client/signal/testsignal/cmd/main.go" />
+      <package value="github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/cmd" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestClient in github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/client" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webrtclient" />
+      <working_directory value="$PROJECT_DIR$/example/client/signal/testsignal/client" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/client" />
+      <pattern value="^TestClient$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestPut in github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/client" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webrtclient" />
+      <working_directory value="$PROJECT_DIR$/example/client/signal/testsignal/client" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/client" />
+      <pattern value="^TestPut$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestPut in github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/client" />
+        <item itemvalue="Go Test.TestClient in github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/client" />
+        <item itemvalue="Go Build.go build github.com/oofpgDLD/webrtclient/example/client/signal/testsignal/cmd" />
+        <item itemvalue="Go Build.go build github.com/oofpgDLD/webrtclient/example/client" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+    <proxy>https://goproxy.cn,direct</proxy>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="774" y="359" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629791335600">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="774" y="359" key="#com.intellij.fileTypes.FileTypeChooser/-2560.0.2048.1112/0.0.2048.1112@0.0.2048.1112" timestamp="1629791335600" />
+    <state width="2005" height="160" key="GridCell.Tab.0.bottom" timestamp="1629792486137">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="160" key="GridCell.Tab.0.bottom/-2560.0.2048.1112/0.0.2048.1112@0.0.2048.1112" timestamp="1629792486137" />
+    <state width="2005" height="160" key="GridCell.Tab.0.center" timestamp="1629792486136">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="160" key="GridCell.Tab.0.center/-2560.0.2048.1112/0.0.2048.1112@0.0.2048.1112" timestamp="1629792486136" />
+    <state width="2005" height="160" key="GridCell.Tab.0.left" timestamp="1629792486136">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="160" key="GridCell.Tab.0.left/-2560.0.2048.1112/0.0.2048.1112@0.0.2048.1112" timestamp="1629792486136" />
+    <state width="2005" height="160" key="GridCell.Tab.0.right" timestamp="1629792486137">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="160" key="GridCell.Tab.0.right/-2560.0.2048.1112/0.0.2048.1112@0.0.2048.1112" timestamp="1629792486137" />
+    <state x="526" y="198" key="SettingsEditor" timestamp="1629358034347">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="526" y="198" key="SettingsEditor/-2560.0.2048.1112/0.0.2048.1112@0.0.2048.1112" timestamp="1629358034347" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1629790626008">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/-2560.0.2048.1112/0.0.2048.1112@0.0.2048.1112" timestamp="1629790626008" />
+  </component>
+</project>
