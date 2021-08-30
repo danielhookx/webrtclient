@@ -1,7 +1,8 @@
 const comp = {
     data() {
         return {
-            name: 'rtp-forwarder'
+            name: 'rtp-forwarder',
+            server: "172.16.101.131:19801"
         }
     }
 }

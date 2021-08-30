@@ -8,13 +8,17 @@ import (
 	"github.com/oofpgDLD/webrtclient/internal/signal"
 	"github.com/pion/webrtc/v3"
 	"net/url"
+	"os"
 )
 
-var addr = flag.String("addr", "172.16.101.131:19801", "http service address")
-var u = url.URL{Scheme: "ws", Host: *addr, Path: "/ws"}
+var addr = flag.String("addr", os.Getenv("SIGNALADDR"), "http service address")
+var goName = "rtp-forwarder"
+var jsName = "demo-"+goName
 
 func main() {
 	flag.Parse()
+	var u = url.URL{Scheme: "ws", Host: *addr, Path: "/ws"}
+
 	engine := &webrtc.MediaEngine{}
 	if err := engine.RegisterCodec(webrtc.RTPCodecParameters{
 		RTPCodecCapability: webrtc.RTPCodecCapability{
@@ -43,8 +47,10 @@ func main() {
 	}
 
 	//初始化 信令服务
-	c := client.NewClient("rtp-forwarder", u)
-
+	c, err := client.NewClient(goName, u)
+	if err != nil {
+		panic(err)
+	}
 	api := webrtc.NewAPI(webrtc.WithMediaEngine(engine))
 
 	// Prepare the configuration
@@ -112,7 +118,7 @@ func main() {
 
 	// Output the answer in base64 so we can paste it in browser
 	fmt.Println(signal.Encode(*peerConnection.LocalDescription()))
-	err = client.Put("http://"+ *addr + "/pub", "demo", signal.Encode(*peerConnection.LocalDescription()))
+	err = client.Put("http://"+ *addr + "/pub", jsName, signal.Encode(*peerConnection.LocalDescription()))
 	if err != nil {
 		fmt.Println("put sdp err:", err.Error())
 	}

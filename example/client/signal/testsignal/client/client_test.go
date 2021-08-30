@@ -11,6 +11,10 @@ var u = url.URL{Scheme: "ws", Host: *addr, Path: "/ws"}
 
 func TestClient(t *testing.T) {
 	flag.Parse()
-	c := NewClient("test", u)
+	c, err := NewClient("test", u)
+	if err != nil {
+		t.Error(err)
+		return
+	}
 	t.Log(c.Read())
 }

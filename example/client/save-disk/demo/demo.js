@@ -11,29 +11,32 @@ var log = msg => {
     document.getElementById('logs').innerHTML += msg + '<br>'
 }
 
-navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-    .then(stream => {
 
-        document.getElementById('video1').srcObject = stream
-        stream.getTracks().forEach(track => pc.addTrack(track, stream));
+window.start = () => {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(stream => {
 
-        pc.createOffer().then(d => pc.setLocalDescription(d)).catch(log)
-    }).catch(log)
+            document.getElementById('video1').srcObject = stream
+            stream.getTracks().forEach(track => pc.addTrack(track, stream));
 
-pc.oniceconnectionstatechange = e => log(pc.iceConnectionState)
-pc.onicecandidate = event => {
-    if (event.candidate === null) {
-        console.log(vm.name);
-        const v = btoa(JSON.stringify(pc.localDescription))
-        document.getElementById('localSessionDescription').value = v
-        axios({
-            url: 'http://172.16.101.131:19801/pub',
-            method: 'post',
-            data: { name: vm.name, sdp: v }
-        })
-            .then(function (myJson) {
-                console.log(myJson);
-            });
+            pc.createOffer().then(d => pc.setLocalDescription(d)).catch(log)
+        }).catch(log)
+
+    pc.oniceconnectionstatechange = e => log(pc.iceConnectionState)
+    pc.onicecandidate = event => {
+        if (event.candidate === null) {
+            console.log(vm.name);
+            const v = btoa(JSON.stringify(pc.localDescription))
+            document.getElementById('localSessionDescription').value = v
+            axios({
+                url: 'http://'+vm.server+'/pub',
+                method: 'post',
+                data: { name: vm.name, sdp: v }
+            })
+                .then(function (myJson) {
+                    console.log(myJson);
+                });
+        }
     }
 }
 

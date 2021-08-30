@@ -8,13 +8,19 @@ import (
 	"github.com/oofpgDLD/webrtclient/internal/signal"
 	"github.com/pion/webrtc/v3"
 	"net/url"
+	"os"
+	"strconv"
 )
 
-var addr = flag.String("addr", "172.16.101.131:19801", "http service address")
-var u = url.URL{Scheme: "ws", Host: *addr, Path: "/ws"}
+var addr = flag.String("addr", os.Getenv("SIGNALADDR"), "http service address")
+var inputAddr = flag.String("input", "127.0.0.1:4002", "http service address")
+var goName = "rtp-to-webrtc"
+var jsName = "demo-"+goName
 
 func main() {
 	flag.Parse()
+	var u = url.URL{Scheme: "ws", Host: *addr, Path: "/ws"}
+	var inputUrl = url.URL{Host: *inputAddr}
 	engine := &webrtc.MediaEngine{}
 	if err := engine.RegisterCodec(webrtc.RTPCodecParameters{
 		RTPCodecCapability: webrtc.RTPCodecCapability{
@@ -43,7 +49,10 @@ func main() {
 	}
 
 	//初始化 信令服务
-	c := client.NewClient("rtp-forwarder", u)
+	c, err := client.NewClient(goName, u)
+	if err != nil {
+		panic(err)
+	}
 
 	api := webrtc.NewAPI(webrtc.WithMediaEngine(engine))
 
@@ -68,7 +77,11 @@ func main() {
 	}()
 
 	//
-	rtp_to_webrtc.RTPToWebInit(peerConnection, "127.0.0.1", 5004)
+	port, err :=strconv.Atoi(inputUrl.Port())
+	if err != nil {
+		panic(err)
+	}
+	rtp_to_webrtc.RTPToWebInit(peerConnection, inputUrl.Host, port)
 
 	// Wait for the offer to be pasted
 	offer := webrtc.SessionDescription{}
@@ -105,12 +118,13 @@ func main() {
 
 	// Output the answer in base64 so we can paste it in browser
 	fmt.Println(signal.Encode(*peerConnection.LocalDescription()))
-	err = client.Put("http://"+ *addr + "/pub", "demo", signal.Encode(*peerConnection.LocalDescription()))
+	err = client.Put("http://"+ *addr + "/pub", jsName, signal.Encode(*peerConnection.LocalDescription()))
 	if err != nil {
 		fmt.Println("put sdp err:", err.Error())
 	}
 
 	go rtp_to_webrtc.ServeVideoTrack()
+	defer rtp_to_webrtc.Close()
 	// Block forever
 	select {}
 }

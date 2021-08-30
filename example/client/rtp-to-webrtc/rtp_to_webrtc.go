@@ -19,11 +19,6 @@ func RTPToWebInit(peerConnection *webrtc.PeerConnection, ip string, port int) {
 	if err != nil {
 		panic(err)
 	}
-	defer func() {
-		if err = listener.Close(); err != nil {
-			panic(err)
-		}
-	}()
 
 	// Create a video track
 	videoTrack, err = webrtc.NewTrackLocalStaticRTP(webrtc.RTPCodecCapability{MimeType: webrtc.MimeTypeVP8}, "video", "pion")
@@ -77,5 +72,11 @@ func ServeVideoTrack() {
 
 			panic(err)
 		}
+	}
+}
+
+func Close() {
+	if err := listener.Close(); err != nil {
+		panic(err)
 	}
 }

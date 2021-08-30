@@ -18,20 +18,21 @@ type Client struct {
 	isClosed int32
 }
 
-func NewClient(name string, u url.URL) *Client{
+func NewClient(name string, u url.URL) (*Client, error){
 	c := &Client{
 		queue:    make(chan []byte, 1024),
 		isClosed: 0,
 	}
+	log.Println("connect to ", u.String())
 	conn, _, err := websocket.DefaultDialer.Dial(u.String(), nil)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	c.conn = conn
 	regMsg := testsignal.RegisterMsg{Name:name}
 	data, err := json.Marshal(regMsg)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	msg := testsignal.Msg{
 		Type: 1,
@@ -39,11 +40,11 @@ func NewClient(name string, u url.URL) *Client{
 	}
 	msgData, err := json.Marshal(msg)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	err = c.conn.WriteMessage(websocket.TextMessage, msgData)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	go func() {
@@ -57,7 +58,7 @@ func NewClient(name string, u url.URL) *Client{
 			c.queue <- message
 		}
 	}()
-	return c
+	return c, nil
 }
 
 func (c *Client) Close() error{

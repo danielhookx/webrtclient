@@ -1,12 +1,12 @@
 // Create WebSocket connection.
-const socket = new WebSocket('ws://172.16.101.131:19801/ws');
+const socket = new WebSocket('ws://'+vm.server+'/ws');
 
 // Connection opened
 socket.addEventListener('open', function (event) {
     socket.send(JSON.stringify({
         type: 1,
         data: JSON.stringify({
-            name: 'demo'
+            name: 'demo-'+vm.name
         })
     }));
 });

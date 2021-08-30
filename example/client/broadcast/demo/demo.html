@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="demo.css" />
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+
+    <body class="text-center p-10">
+        <div id="app">
+            <div v-if="page === 1">
+                <button class="my-5 bg-blue-400 text-white p-3 rounded-xl mr-3" v-on:click="publish">
+                    Publish a Broadcast
+                </button>
+                <button class="my-5 bg-blue-400 text-white p-3 rounded-xl" v-on:click="subscribe">
+                    Join a Broadcast
+                </button>
+            </div>
+
+            <div v-else class="mb-11">
+                <div>signal server: <input class="outline-black" type="text" v-model="server" /></div>
+                <br />
+                <div>hub server: <input class="outline-black" type="text" v-model="center" /></div>
+                <br />
+                <div>name: <input class="outline-black" type="text" v-model="name" /></div>
+                <br />
+                <div>room: <input class="outline-black" type="text" v-model="room" /></div>
+                <br />
+                <button class="my-4 bg-blue-400 text-white p-3 rounded-xl" v-on:click="start">Start</button>
+
+                <!-- Browser base64 Session Description -->
+                <div class="mb-10">
+                    <p class="my-4">Browser base64 Session Description</p>
+                    <textarea class="outline-black" id="localSessionDescription" readonly="true"></textarea>
+                </div>
+
+                <!-- Golang base64 Session Description -->
+                <div>
+                    <p class="my-4">Golang base64 Session Description</p>
+                    <textarea class="outline-black" id="remoteSessionDescription"></textarea>
+                </div>
+
+                <!-- control area -->
+                <div>
+                    <button class="my-4 bg-blue-400 text-white p-3 rounded-xl" v-on:click="startSession">
+                        Start Session
+                    </button>
+
+                    <div class="flex flex-col mb-10">
+                        <p>Video</p>
+                        <video class="self-center" id="remoteVideos" width="160" height="120" autoplay muted></video>
+                    </div>
+                </div>
+                <div>
+                    <p>Logs</p>
+                    <div v-text="logMsg"></div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let pc = new RTCPeerConnection({
+                iceServers: [
+                    {
+                        urls: 'stun:stun.l.google.com:19302',
+                    },
+                ],
+            })
+        </script>
+        <script src="vue.js"></script>
+        <script src="ws.js"></script>
+    </body>
+</html>

@@ -9,9 +9,15 @@
 
     <body class="text-center p-10">
         <div id="app">
+            <div class="mb-11">
+                <div>signal server: <input class="outline-black" type="text" v-model="server" /></div><br/>
+                <div>name: <input class="outline-black" type="text" v-model="name" /></div><br/>
+                <button class="my-4 bg-blue-400 text-white p-3 rounded-xl" onclick="window.start()">
+                    Start
+                </button>
+            </div>
             <!-- Browser base64 Session Description -->
             <div class="mb-10">
-                <div>name: <input class="outline-black" type="text" v-model="name" /></div>
                 <p class="my-4">Browser base64 Session Description</p>
                 <textarea class="outline-black" id="localSessionDescription" readonly="true"></textarea>
             </div>
