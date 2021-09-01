@@ -14,7 +14,7 @@ type Hub struct {
 	Room string
 }
 
-func Cors(w http.ResponseWriter, r *http.Request) error{
+func Cors(w http.ResponseWriter, r *http.Request) error {
 	h := w.Header()
 	h.Set("Access-Control-Allow-Origin", "*")
 	h.Set("Access-Control-Allow-Headers", "*") //Content-Type,AccessToken,X-CSRF-Token,Authorization,Token,FZM-APP-ID
@@ -34,7 +34,7 @@ func HTTPPubSubServer(port int) (chan *Hub, chan *Hub) {
 	pubChan := make(chan *Hub)
 	subChan := make(chan *Hub)
 	http.HandleFunc("/publish", func(w http.ResponseWriter, r *http.Request) {
-		err := Cors(w,r)
+		err := Cors(w, r)
 		if err != nil {
 			return
 		}
@@ -50,7 +50,7 @@ func HTTPPubSubServer(port int) (chan *Hub, chan *Hub) {
 	})
 
 	http.HandleFunc("/subscribe", func(w http.ResponseWriter, r *http.Request) {
-		err := Cors(w,r)
+		err := Cors(w, r)
 		if err != nil {
 			return
 		}

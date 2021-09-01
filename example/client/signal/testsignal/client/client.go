@@ -12,13 +12,13 @@ import (
 )
 
 type Client struct {
-	conn *websocket.Conn
+	conn  *websocket.Conn
 	queue chan []byte
 
 	isClosed int32
 }
 
-func NewClient(name string, u url.URL) (*Client, error){
+func NewClient(name string, u url.URL) (*Client, error) {
 	c := &Client{
 		queue:    make(chan []byte, 1024),
 		isClosed: 0,
@@ -29,7 +29,7 @@ func NewClient(name string, u url.URL) (*Client, error){
 		return nil, err
 	}
 	c.conn = conn
-	regMsg := testsignal.RegisterMsg{Name:name}
+	regMsg := testsignal.RegisterMsg{Name: name}
 	data, err := json.Marshal(regMsg)
 	if err != nil {
 		return nil, err
@@ -61,13 +61,13 @@ func NewClient(name string, u url.URL) (*Client, error){
 	return c, nil
 }
 
-func (c *Client) Close() error{
+func (c *Client) Close() error {
 	if atomic.CompareAndSwapInt32(&c.isClosed, 0, 1) {
 		return c.conn.Close()
 	}
 	return fmt.Errorf("")
 }
 
-func (c *Client) Read() []byte{
+func (c *Client) Read() []byte {
 	return <-c.queue
 }

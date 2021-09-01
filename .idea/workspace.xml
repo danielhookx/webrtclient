@@ -2,30 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3101040-44af-4bf6-9fbd-cda93f5e2e3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-forwarder/build/client" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-forwarder/build/client" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-forwarder/build/client.exe" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-forwarder/build/client.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-forwarder/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-forwarder/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-forwarder/demo/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-forwarder/demo/demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-forwarder/demo/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-forwarder/demo/demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-forwarder/demo/vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-forwarder/demo/vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-forwarder/demo/ws.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-forwarder/demo/ws.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-to-webrtc/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-to-webrtc/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-to-webrtc/demo/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-to-webrtc/demo/demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-to-webrtc/demo/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-to-webrtc/demo/demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-to-webrtc/demo/vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-to-webrtc/demo/vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-to-webrtc/demo/ws.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-to-webrtc/demo/ws.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-to-webrtc/rtp-forwarder.sdp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/rtp-to-webrtc/rtp_to_webrtc.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/rtp-to-webrtc/rtp_to_webrtc.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/save-disk/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/save-disk/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/save-disk/demo/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/save-disk/demo/demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/save-disk/demo/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/save-disk/demo/demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/save-disk/demo/vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/save-disk/demo/vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/save-disk/demo/ws.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/save-disk/demo/ws.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/signal/testsignal/client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/signal/testsignal/client/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/client/signal/testsignal/client/client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/signal/testsignal/client/client_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/signal/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/signal/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/client/broadcast/build/client" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/broadcast/build/client" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/client/broadcast/chan.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/broadcast/chan.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/client/broadcast/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/broadcast/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/client/broadcast/demo/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/broadcast/demo/demo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/client/broadcast/demo/vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/client/broadcast/demo/vue.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,14 +1,14 @@
 package cmd
 
-import(
+import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"os"
 )
 
-var rootCmd = &cobra.Command {
-	Use:	"",
-	Short:  "",
+var rootCmd = &cobra.Command{
+	Use:     "",
+	Short:   "",
 	Example: "",
 }
 

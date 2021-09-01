@@ -7,19 +7,19 @@ import (
 	"net/http"
 )
 
-func Put(url string, name string, sdp string) error{
+func Put(url string, name string, sdp string) error {
 	c := http.Client{
 		Transport:     nil,
 		CheckRedirect: nil,
 		Jar:           nil,
 		Timeout:       0,
 	}
-	var params = struct{
+	var params = struct {
 		Name string `json:"name"`
-		SDP string `json:"sdp"`
+		SDP  string `json:"sdp"`
 	}{
-		Name:name,
-		SDP:sdp,
+		Name: name,
+		SDP:  sdp,
 	}
 	data, err := json.Marshal(params)
 	if err != nil {

@@ -3,6 +3,7 @@ package broadcast
 import (
 	"errors"
 	"github.com/pion/webrtc/v3"
+	"log"
 	"sync"
 )
 
@@ -10,22 +11,39 @@ var once sync.Once
 var roomManager *RoomManager
 
 type Room struct {
+	m              sync.RWMutex
 	localTrackChan chan *webrtc.TrackLocalStaticRTP
-	subscribe chan string
-	membersConn []*webrtc.PeerConnection
+	subSignal      chan string
+	membersConn    []*webrtc.PeerConnection
+	tracks         []*webrtc.TrackLocalStaticRTP
 }
 
-func NewRoom() *Room{
+func NewRoom() *Room {
 	r := &Room{
 		localTrackChan: make(chan *webrtc.TrackLocalStaticRTP, 100),
-		subscribe:      make(chan string, 100),
+		subSignal:      make(chan string, 100),
 		membersConn:    make([]*webrtc.PeerConnection, 0),
+		tracks:         make([]*webrtc.TrackLocalStaticRTP, 0),
 	}
+	go func() {
+		for track := range r.localTrackChan {
+			r.m.Lock()
+			log.Printf("append track: %v", track)
+			r.tracks = append(r.tracks, track)
+			r.m.Unlock()
+		}
+	}()
 	return r
 }
 
-func (r *Room) GetLocalTrackChan() chan *webrtc.TrackLocalStaticRTP{
-	return r.localTrackChan
+func (r *Room) Publish(src *webrtc.TrackLocalStaticRTP) {
+	r.localTrackChan <- src
+}
+
+func (r *Room) GetTracks() []*webrtc.TrackLocalStaticRTP {
+	r.m.RLock()
+	defer r.m.RUnlock()
+	return r.tracks
 }
 
 //maybe need close
@@ -39,11 +57,11 @@ func (r *Room) SaveMember(conn *webrtc.PeerConnection) {
 }
 
 type RoomManager struct {
-	m sync.RWMutex
+	m     sync.RWMutex
 	rooms map[string]*Room
 }
 
-func GetRoomManager() *RoomManager{
+func GetRoomManager() *RoomManager {
 	once.Do(func() {
 		roomManager = &RoomManager{
 			rooms: make(map[string]*Room),
@@ -52,12 +70,12 @@ func GetRoomManager() *RoomManager{
 	return roomManager
 }
 
-func (rm *RoomManager)AddRoom(room string) *Room{
+func (rm *RoomManager) AddRoom(room string) *Room {
 	rm.m.Lock()
 	defer rm.m.Unlock()
 	var r *Room
 	var ok bool
-	if r, ok = rm.rooms[room]; !ok || r==nil {
+	if r, ok = rm.rooms[room]; !ok || r == nil {
 		r = NewRoom()
 		rm.rooms[room] = r
 		return r
@@ -65,29 +83,29 @@ func (rm *RoomManager)AddRoom(room string) *Room{
 	return r
 }
 
-func (rm *RoomManager)GetRoom(room string) (*Room, error){
+func (rm *RoomManager) GetRoom(room string) (*Room, error) {
 	rm.m.RLock()
 	defer rm.m.RUnlock()
-	if r, ok := rm.rooms[room]; !ok || r==nil {
+	if r, ok := rm.rooms[room]; !ok || r == nil {
 		return nil, errors.New("room not find")
-	}else {
+	} else {
 		return r, nil
 	}
 }
 
-func (rm *RoomManager)JoinIn(room, name string) {
+func (rm *RoomManager) JoinIn(room, name string) {
 	rm.m.RLock()
 	defer rm.m.RUnlock()
-	if r, ok := rm.rooms[room]; ok && r != nil{
-		r.subscribe <- name
+	if r, ok := rm.rooms[room]; ok && r != nil {
+		r.subSignal <- name
 	}
 }
 
-func (rm *RoomManager)GetSubscribe(room string) (chan string, error){
+func (rm *RoomManager) GetSubscribe(room string) (chan string, error) {
 	rm.m.RLock()
 	defer rm.m.RUnlock()
-	if r, ok := rm.rooms[room]; ok && r != nil{
-		return r.subscribe, nil
+	if r, ok := rm.rooms[room]; ok && r != nil {
+		return r.subSignal, nil
 	}
 	return nil, errors.New("room not find")
 }

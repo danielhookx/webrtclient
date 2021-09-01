@@ -47,9 +47,14 @@
                         Start Session
                     </button>
 
-                    <div class="flex flex-col mb-10">
+                    <div v-if="page === 2" class="flex flex-col mb-10">
                         <p>Video</p>
                         <video class="self-center" id="remoteVideos" width="160" height="120" autoplay muted></video>
+                    </div>
+
+                    <div v-if="page === 3" class="flex flex-col mb-10">
+                        <p>Video</p>
+                        <div id="remoteVideos"></div>
                     </div>
                 </div>
                 <div>

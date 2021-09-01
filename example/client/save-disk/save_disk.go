@@ -41,7 +41,6 @@ func SaveToDiskReg(peerConnection *webrtc.PeerConnection) {
 		panic(err)
 	}
 
-
 	// Set a handler for when a new remote track starts, this handler saves buffers to disk as
 	// an ivf file, since we could have multiple video tracks we provide a counter.
 	// In your application this is where you would handle/process video

@@ -11,7 +11,6 @@ import (
 var listener *net.UDPConn
 var videoTrack *webrtc.TrackLocalStaticRTP
 
-
 func RTPToWebInit(peerConnection *webrtc.PeerConnection, ip string, port int) {
 	// Open a UDP Listener for RTP Packets on port 5004
 	var err error

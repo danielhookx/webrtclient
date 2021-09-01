@@ -19,7 +19,7 @@ const comp = {
         },
 
         subscribe: function () {
-            this.page = 2
+            this.page = 3
             this.mode = 'subscribe'
         },
 
@@ -27,7 +27,7 @@ const comp = {
             wsStart()
             if (this.mode === 'publish') {
                 navigator.mediaDevices
-                    .getUserMedia({ video: true, audio: false })
+                    .getUserMedia({ video: true, audio: true })
                     .then((stream) => {
                         stream.getTracks().forEach((track) => pc.addTrack(track, stream))
                         document.getElementById('remoteVideos').srcObject = stream
@@ -71,6 +71,15 @@ const comp = {
                     console.log(myJson)
                 })
 
+                pc.ontrack = function (event) {
+                    var el = document.createElement(event.track.kind)
+                    el.srcObject = event.streams[0]
+                    el.autoplay = true
+                    el.controls = true
+
+                    document.getElementById('remoteVideos').appendChild(el)
+                }
+
                 pc.oniceconnectionstatechange = (e) => (this.logMsg = pc.iceConnectionState)
                 pc.onicecandidate = (event) => {
                     if (event.candidate === null) {
@@ -90,17 +99,18 @@ const comp = {
                 }
 
                 // pc.addTransceiver('remoteVideos')
-                pc.addTransceiver('video')
+                pc.addTransceiver('audio', {'direction': 'recvonly'})
+                pc.addTransceiver('video', {'direction': 'recvonly'})
                 pc.createOffer()
                     .then((d) => pc.setLocalDescription(d))
                     .catch((err) => (this.logMsg = err))
 
-                pc.ontrack = function (event) {
-                    var el = document.getElementById('remoteVideos')
-                    el.srcObject = event.streams[0]
-                    el.autoplay = true
-                    el.controls = true
-                }
+                // pc.ontrack = function (event) {
+                //     var el = document.getElementById('remoteVideos')
+                //     el.srcObject = event.streams[0]
+                //     el.autoplay = true
+                //     el.controls = true
+                // }
             }
         },
 

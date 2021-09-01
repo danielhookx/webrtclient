@@ -18,7 +18,7 @@ func main() {
 			SDPFmtpLine:  "",
 			RTCPFeedback: nil,
 		},
-		PayloadType:        0,
+		PayloadType: 0,
 	}, webrtc.RTPCodecTypeVideo); err != nil {
 		panic(err)
 	}
@@ -31,7 +31,7 @@ func main() {
 			SDPFmtpLine:  "",
 			RTCPFeedback: nil,
 		},
-		PayloadType:        0,
+		PayloadType: 0,
 	}, webrtc.RTPCodecTypeAudio); err != nil {
 		panic(err)
 	}

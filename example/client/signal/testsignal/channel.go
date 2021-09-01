@@ -3,10 +3,10 @@ package testsignal
 const defaultSrvBuf = 1000
 
 type Channel struct {
-	signal   chan []byte
+	signal chan []byte
 }
 
-func NewChannel() *Channel{
+func NewChannel() *Channel {
 	ch := &Channel{
 		signal: make(chan []byte, defaultSrvBuf),
 	}
@@ -14,9 +14,9 @@ func NewChannel() *Channel{
 }
 
 func (ch *Channel) Push(data []byte) {
-	ch.signal<- data
+	ch.signal <- data
 }
 
-func (ch *Channel) Ready() []byte{
+func (ch *Channel) Ready() []byte {
 	return <-ch.signal
 }

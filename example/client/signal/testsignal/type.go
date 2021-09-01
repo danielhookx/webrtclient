@@ -3,15 +3,15 @@ package testsignal
 import "encoding/json"
 
 type Msg struct {
-	Type int	`json:"type"`
-	Data string	`json:"data"`
+	Type int    `json:"type"`
+	Data string `json:"data"`
 }
 
 type RegisterMsg struct {
 	Name string `json:"name"`
 }
 
-func Parse(data []byte) (*Msg, error){
+func Parse(data []byte) (*Msg, error) {
 	msg := Msg{}
 	err := json.Unmarshal(data, &msg)
 	if err != nil {
@@ -20,7 +20,7 @@ func Parse(data []byte) (*Msg, error){
 	return &msg, err
 }
 
-func ParseRegisterMsg(data []byte) (*RegisterMsg, error){
+func ParseRegisterMsg(data []byte) (*RegisterMsg, error) {
 	msg := RegisterMsg{}
 	err := json.Unmarshal(data, &msg)
 	if err != nil {

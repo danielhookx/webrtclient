@@ -7,12 +7,12 @@ import (
 )
 
 var stunCmd = &cobra.Command{
-	Use:                        "stun",
-	Short:                      "stun client",
-	Long:                       "",
-	Example:                    "stun -h stun.l.google.com:19302",
-	Version:                    "",
-	Run:						DoStun,
+	Use:     "stun",
+	Short:   "stun client",
+	Long:    "",
+	Example: "stun -h stun.l.google.com:19302",
+	Version: "",
+	Run:     DoStun,
 }
 
 var (

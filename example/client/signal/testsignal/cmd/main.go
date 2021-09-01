@@ -107,7 +107,7 @@ func WsHandle(cxt *gin.Context) {
 				}
 				//注册
 				sig.Reg(msg.Name, ch)
-				fmt.Println( msg.Name, " registered")
+				fmt.Println(msg.Name, " registered")
 			}
 		case websocket.PingMessage, websocket.PongMessage, websocket.CloseMessage:
 		default:
@@ -117,9 +117,9 @@ func WsHandle(cxt *gin.Context) {
 }
 
 func Pub(c *gin.Context) {
-	var params = struct{
+	var params = struct {
 		Name string `json:"name"`
-		SDP string `json:"sdp"`
+		SDP  string `json:"sdp"`
 	}{}
 	err := c.ShouldBindJSON(&params)
 	if err != nil {

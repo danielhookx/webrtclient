@@ -24,12 +24,12 @@ func (s *Signal) Reg(name string, ch *Channel) {
 	s.Unlock()
 }
 
-func (s *Signal) Push(name string, sdp string) error{
+func (s *Signal) Push(name string, sdp string) error {
 	s.Lock()
 	defer s.Unlock()
 	if ch := s.members[name]; ch == nil {
 		return errors.New("member not find")
-	}else {
+	} else {
 		ch.Push([]byte(sdp))
 		return nil
 	}

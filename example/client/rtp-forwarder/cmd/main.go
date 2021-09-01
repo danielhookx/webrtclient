@@ -13,7 +13,7 @@ import (
 
 var addr = flag.String("addr", os.Getenv("SIGNALADDR"), "http service address")
 var goName = "rtp-forwarder"
-var jsName = "demo-"+goName
+var jsName = "demo-" + goName
 
 func main() {
 	flag.Parse()
@@ -28,7 +28,7 @@ func main() {
 			SDPFmtpLine:  "",
 			RTCPFeedback: nil,
 		},
-		PayloadType:        0,
+		PayloadType: 0,
 	}, webrtc.RTPCodecTypeVideo); err != nil {
 		panic(err)
 	}
@@ -41,7 +41,7 @@ func main() {
 			SDPFmtpLine:  "",
 			RTCPFeedback: nil,
 		},
-		PayloadType:        0,
+		PayloadType: 0,
 	}, webrtc.RTPCodecTypeAudio); err != nil {
 		panic(err)
 	}
@@ -118,7 +118,7 @@ func main() {
 
 	// Output the answer in base64 so we can paste it in browser
 	fmt.Println(signal.Encode(*peerConnection.LocalDescription()))
-	err = client.Put("http://"+ *addr + "/pub", jsName, signal.Encode(*peerConnection.LocalDescription()))
+	err = client.Put("http://"+*addr+"/pub", jsName, signal.Encode(*peerConnection.LocalDescription()))
 	if err != nil {
 		fmt.Println("put sdp err:", err.Error())
 	}
